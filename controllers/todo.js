@@ -1,9 +1,15 @@
+// App:"Midterm-301197862"
+// Student: Jocelyne Ojeda
+// StudentId: 301197862
+// Date: October 29th, 2022
+
+
 // create a reference to the model
-let todoModel = require('../models/todo');
+let TodoModel = require('../models/todo');
 
 // Gets all todo from the Database and renders the page to list them all.
 module.exports.todoList = function(req, res, next) {  
-    todoModel.find((err, todoList) => {
+    TodoModel.find((err, todoList) => {
         //console.log(todoList);
         if(err)
         {
@@ -26,7 +32,7 @@ module.exports.details = (req, res, next) => {
     
     let id = req.params.id;
 
-    todoModel.findById(id, (err, todoToShow) => {
+    TodoModel.findById(id, (err, todoToShow) => {
         if(err)
         {
             console.log(err);
@@ -49,7 +55,7 @@ module.exports.displayEditPage = (req, res, next) => {
     // ADD YOUR CODE HERE
     let id= req.params.id;
 
-    todoModel.findById(id, (err, itemToEdit) => {
+    TodoModel.findById(id, (err, itemToEdit) => {
         if(err)
         {
         console.log(err);
@@ -76,7 +82,7 @@ module.exports.processEditPage = (req, res, next) => {
     
     console.log(req.body);
 
-    let updatedTodo = todoModel({
+    let updatedTodo = TodoModel({
         _id: req.body.id,
         task: req.body.task,
         description: req.body.description,
@@ -85,7 +91,7 @@ module.exports.processEditPage = (req, res, next) => {
 
     // ADD YOUR CODE HERE
 
-    todoModel.updateOne({_id: id}, updatedTodo, (err) =>{
+    TodoModel.updateOne({_id: id}, updatedTodo, (err) =>{
         if(err)
         {
             console.log(err);
@@ -106,7 +112,7 @@ module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
     // ADD YOUR CODE HERE
 
-    todoModel.remove({_id: id}, (err) => {
+    TodoModel.remove({_id: id}, (err) => {
         if(err)
         {
             console.log(err);
@@ -124,7 +130,7 @@ module.exports.performDelete = (req, res, next) => {
 module.exports.displayAddPage = (req, res, next) => {
 
     // ADD YOUR CODE HERE    
-    let newItem = todoModel();
+    let newItem = TodoModel();
     
     res.render('todo/add_edit',{
         title: 'Add a new item',
@@ -139,7 +145,7 @@ module.exports.processAddPage = (req, res, next) => {
 
     console.log(req.body);
 
-    let newItem = todoModel({
+    let newItem = TodoModel({
         _id: req.body.id,
         task: req.body.task,
         description: req.body.description,
@@ -148,7 +154,7 @@ module.exports.processAddPage = (req, res, next) => {
 
     // ADD YOUR CODE HERE
     
-    todoModel.create(newItem, (err, todo) =>{
+    TodoModel.create(newItem, (err, todo) =>{
         if(err)
         {
             console.log(err);

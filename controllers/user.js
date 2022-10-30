@@ -1,3 +1,9 @@
+// App:"Midterm-301197862"
+// Student: Jocelyne Ojeda
+// StudentId: 301197862
+// Date: October 29th, 2022
+
+
 let User = require('../models/user');
 let passport = require('passport');
 
