@@ -1,4 +1,5 @@
 var express = require('express');
+const { removeData } = require('jquery');
 var router = express.Router();
 
 let todoController = require('../controllers/todo');
@@ -6,10 +7,15 @@ let todoController = require('../controllers/todo');
 // Helper function for guard purposes
 function requireAuth(req, res, next)
 {
-    // check if the user is logged in
-    
+//     check if the user is logged in
+    if(!req.isAuthenticated())
+   
     // ADD YOUR CODE HERE        
-
+    {
+        req.session.url = req.originalUrl;
+        return res.redirect('/users/signin');
+    }
+    next();
 }
 
 /* GET list of items */

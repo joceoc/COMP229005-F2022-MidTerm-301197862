@@ -5,3 +5,10 @@ exports.home = function(req, res, next) {
         userName: req.user ? req.user.username : ''
     });
 };
+
+// exports.addEdit = function(req, res, next) {
+//     res.render('index', { 
+//         title: 'Add Todo',
+//         userName: req.user ? req.user.username : ''
+//     });
+// };
