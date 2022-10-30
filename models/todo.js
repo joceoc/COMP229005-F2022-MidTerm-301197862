@@ -13,4 +13,4 @@ let todoModel = mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("todo", todoModel);
+module.exports = mongoose.model('Todo', todoModel);

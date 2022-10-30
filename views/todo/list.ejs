@@ -24,12 +24,12 @@
                 <th class="text-center">Task</th>                    
                 <th class="text-center">Description</th>
                 <th class="text-center">Complete</th>
-                <th class="text-center" colspan="2">Actions</th>
+                <th class="text-center" colspan="3">Actions</th>
             </tr>
 
             <!-- Repeatable Template Row -->
 
-            <% for(let i = 1; i < TodoList.length; i++) { %>
+            <% for(let i = 0; i < TodoList.length; i++) { %>
                 <tr>
                     <td class="text-center"><%= TodoList[i].task %></td>
                     <td class="text-center"><%= TodoList[i].description %></td>
